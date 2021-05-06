@@ -41,8 +41,7 @@ function setup() {
   
   function draw() {
     background(225);  
-    Engine.update(engine);
-      
+        
     textSize(20);
     text("Score :" +score,20,20)
 
@@ -50,13 +49,15 @@ function setup() {
     text("500",15, 550);
     text("500", 95, 550);
     text("500", 175, 550);
-    text("500", 255, 550);
+    text("100", 255, 550);
     text("100", 335, 550);
     text("100", 415, 550);
     text("100", 495, 550);
     text("200", 575, 550);
     text("200", 655, 550);
     text("200", 735, 550);
+	  
+  Engine.update(engine);
     
   base.display();
   if(gameState == "end"){
@@ -64,35 +65,33 @@ function setup() {
     text("gameover",400,400); 
   }
      
-if(gameState != "end"){
-  
-        if(particle3.body.position.x < 300 && particle3.body.position.y > 760){
-      score=score+500
-      particle3.display();
+if(gameState != null ){
+	
+	particle3.display();
 
-      //particle3=null;
+	
+if(ball.body.position.y > 760){	
+        if(particle3.body.position.x < 300 ){
+      score=score+500
+      particle3=null;
       if(count>=5){
       gameState="end";
     }}
-    else if (particle3.body.position.x > 301 && particle3.body.position.x < 600 && particle3.body.position.y > 760){
+    else if (particle3.body.position.x > 301 && particle3.body.position.x < 600 ){
       score = score + 100;
-      particle3.display();
-      //particle3 = null;
+      particle3 = null;
       if(count >=5){
         gameState = "end";
     }}
-    else if(particle3.body.position.x < 800 && particle3.body.position.x > 601 && particle3.body.position.y > 760){
+    else if(particle3.body.position.x < 800 && particle3.body.position.x > 601){
       score = score + 200;
-      particle3.display();
-      //particle3 = null;
+      particle3 = null;
       if(count >= 5){
         gameState = "end"; 
     }}
-    
 }
-  for(var s = 0; s<Particle.length;s++){
-    Particle[s].display();
-  }
+}
+
   for (var i = 0; i < plinko.length; i++) {
     plinko[i].display();
   }
@@ -106,6 +105,6 @@ if(gameState != "end"){
     if(gameState !== "end"){
       count++;
       particle3 = new Particle1(mouseX,50,10,10);
-      Particle.push(particle3);
+  
     }
   }
